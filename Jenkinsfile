@@ -3,7 +3,16 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'Building..'
+        parallel(
+          "Build": {
+            echo 'Building..'
+            
+          },
+          "Check styles": {
+            echo 'Style is ..... OK'
+            
+          }
+        )
       }
     }
     stage('Test') {
