@@ -25,6 +25,14 @@ pipeline {
           "Unit tests": {
             emailext(subject: 'Hi. its a test email', body: 'Boyd test', attachLog: true, from: 'JENKINS', to: 'sergii.ponomarov@gmail.com')
             
+          },
+          "Integration tests": {
+            node(label: 'test-label') {
+              echo 'Test'
+            }
+            
+            error 'This is an error'
+            
           }
         )
       }
